@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 import { register } from '../redux/authentication/AutOperations';
+import { Link } from 'react-router-dom';
 
 import { Notify } from 'notiflix';
 
@@ -65,7 +66,7 @@ const RegisterForm = () => {
         />
       </label>
       <button type="submit">Register</button>
-      <link to="/login">Have acount? LogIn</link>
+      <Link to="/login">Have acount? LogIn</Link>
     </form>
   );
 };

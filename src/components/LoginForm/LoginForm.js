@@ -1,5 +1,6 @@
 import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logIn } from '../redux/authentication/AutOperations';
 
 const LoginForm = () => {
@@ -51,7 +52,7 @@ const LoginForm = () => {
         />
       </label>
       <button type="submit">LogIn</button>
-      <link to="/register">Don`t have acount? Register</link>
+      <Link to="/register">Don`t have acount? Register</Link>
     </form>
   );
 };
