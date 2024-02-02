@@ -37,9 +37,9 @@ const SignUp = () => {
         })
         .catch((error) => {
             if (error.payload && error.payload.message) {
-                alert(error.payload.message);
+                console.log(error.payload.message);
             } else {
-                alert('An error occurred. Please try again.');
+                console.log(error);
             }
         });
 };
