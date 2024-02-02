@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/224.b241c164.chunk.css","mappings":"AAAA,2BAKQ,wBAAyB,CADzB,2BAA4B,CAF5B,aAAc,CADlB,iBAKJ","sources":["Pages/Home/Home.module.css"],"sourcesContent":[".HomeContainer {\n    padding: 38px 48px;\n        height: 100dvb;\n    \n        border-radius: 32px 32px 0 0;\n        background-color: #f9f9f9;\n}"],"names":[],"sourceRoot":""}
