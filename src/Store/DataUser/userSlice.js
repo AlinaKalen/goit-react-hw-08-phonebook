@@ -18,8 +18,8 @@ const handleIfReject = (state, { payload }) => {
 };
 
 const handleIfFulfilled = (state, { payload }) => {
-    state.user = payload.user;
-    state.token = payload.token;
+    state.user = payload.data.user;
+    state.token = payload.data.token;
     state.isLoading = false;
     state.error = null;
 };

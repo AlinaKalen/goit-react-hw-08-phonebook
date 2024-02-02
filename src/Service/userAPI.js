@@ -10,13 +10,11 @@ export const token = {
 };
 
 export const signUpUser = async credentials => {
-    const { data } = await backAPI.post('users/signup', credentials)
-    return data
+    return await backAPI.post('users/signup', credentials)
 };
 
 export const loginUser = async credentials => {
-    const { data } = await backAPI.post('users/login', credentials)
-    return data
+    return await backAPI.post('users/login', credentials)
 };
 
 export const logoutUser = async () => {
@@ -24,6 +22,5 @@ export const logoutUser = async () => {
 };
 
 export const currentUser = async () => {
-    const data = await backAPI.get('users/current')
-    return data
+    return await backAPI.get('users/current')
 };

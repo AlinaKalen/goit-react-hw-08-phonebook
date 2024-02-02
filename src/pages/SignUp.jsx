@@ -28,20 +28,21 @@ const SignUp = () => {
     };
 
     const handleOnSubmit = e => {
-    e.preventDefault();
-    dispatch(signUpThunk({ email, password, name }))
-        .unwrap()
-        .then(() => {
-            setEmail('');
-            setPassword('');
-        })
-        .catch((error) => {
-            if (error.payload && error.payload.message) {
-                console.log(error.payload.message);
-            } else {
-                console.log(error);
-            }
-        });
+        e.preventDefault();
+        const form = e.currentTarget;
+        dispatch(signUpThunk({ email, password, name }))
+            .unwrap()
+            .then(result => {
+                console.log("sugned up successfully: " + result);
+            })
+            .catch((error) => {
+                if (error.payload && error.payload.message) {
+                    console.log(error.payload.message);
+                } else {
+                    console.log(error);
+                }
+            });
+        form.reset();
 };
 
     return (

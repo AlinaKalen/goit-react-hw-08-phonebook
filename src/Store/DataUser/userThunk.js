@@ -5,7 +5,8 @@ export const signUpThunk = createAsyncThunk(
     'auth/signUp',
     async (credentials, { rejectWithValue }) => {
         try {
-            const { data } = await signUpUser(credentials)
+            const data = await signUpUser(credentials);
+            token.set(data.token);
             return data;
         } catch (error) {
             return rejectWithValue(error.message)
