@@ -30,9 +30,9 @@ const Login = () => {
         dispatch(loginThunk({ email, password }))
             .unwrap()
             .then(originalPromiseResult => {
-                Notify.success(`${originalPromiseResult.user.name} Welcome back!`);
+                Notify.success(`${originalPromiseResult.data.user.name} Welcome back!`);
             })
-            .catch(() => {
+            .catch((error) => {
                 Notify.failure('Incorrect login or password');
             })
             .finally(() => {
