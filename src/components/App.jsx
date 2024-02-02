@@ -1,52 +1,34 @@
-import { lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
-import { useAuth } from '../components/UseAut/UseAut';
-import { refreshUser } from '../components/redux/authentication/AutOperations';
-import Layout from './Layout';
-import PrivateRoute from './Route';
-import RestrictedRoute from './RestRoute';
-
-const HomePage = lazy(() => import('Pages/Home/Home'));
-const RegisterPage = lazy(() => import('Pages/Register/Register'));
-const LoginPage = lazy(() => import('Pages/Login/Login'));
-const ContactsPage = lazy(() => import('Pages/Contacts/Contacts'));
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import { refreshUserThunk } from "Store/DataUser/userThunk";
+import Navigation from "./Navigation/Navigation";
+import { PublicRoute } from "./Public/PublicRoute";
+import SignUp from "pages/SignUp";
+import Login from "../pages/Login";
+import { PrivateRoute } from "./Private/PrivateRoute";
+import Contacts from "pages/Contacts";
+import css from './App.module.css'
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
-
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(refreshUserThunk())
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <b>Refreshing user</b>
-  ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute redirectTo="/login" component={<RegisterPage />} />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
-          }
-        />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
-          }
-        />
-        <Route path="*" element={<HomePage />} />
-      </Route>
-    </Routes>
-  );
+  return (
+    <div className={css.div}>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<PublicRoute />}>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/contacts" element={<Contacts />} />
+        </Route>
+      </Routes>
+    </div>
+  )
 };
+

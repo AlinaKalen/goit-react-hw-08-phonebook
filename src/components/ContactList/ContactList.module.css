@@ -1,5 +1,18 @@
-.ContactsList {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 24px;
+.list {
+    list-style: none;
+    padding: 0;    
 }
+
+.name {
+
+    color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.button:hover {
+background-color: brown;
+}
+
