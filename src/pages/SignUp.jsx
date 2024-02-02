@@ -28,15 +28,21 @@ const SignUp = () => {
     };
 
     const handleOnSubmit = e => {
-        e.preventDefault();
-        dispatch(signUpThunk({ email, password, name }))
-            .unwrap()
-            .then(() => {
-                setEmail('');
-                setPassword('')
-            })
-            .catch(() => alert('Please enter all input'))
-    };
+    e.preventDefault();
+    dispatch(signUpThunk({ email, password, name }))
+        .unwrap()
+        .then(() => {
+            setEmail('');
+            setPassword('');
+        })
+        .catch((error) => {
+            if (error.payload && error.payload.message) {
+                alert(error.payload.message);
+            } else {
+                alert('An error occurred. Please try again.');
+            }
+        });
+};
 
     return (
         <Container style={{display: 'flex', alignItems: 'center', alignContent: 'center', justifyContent: 'center'}}>
